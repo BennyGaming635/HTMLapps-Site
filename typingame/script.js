@@ -4,8 +4,9 @@ let startTime = 0;
 let totalErrors = 0;
 let totalTime = 0;
 let totalTries = 0;
+let countdownTimer = null;
 
-// Expanded sentences for different difficulty levels
+// Sentences for different difficulty levels
 const sentences = {
     easy: [
         "The quick brown fox jumps over the lazy dog.",
@@ -52,11 +53,30 @@ function getRandomSentence(difficulty) {
     return selectedSentences[Math.floor(Math.random() * selectedSentences.length)];
 }
 
-// Start the game
+// Start the game with a 5-second countdown
+function startGameWithCountdown() {
+    let countdown = 5;
+    sentenceDisplay.textContent = `Game starts in ${countdown} seconds...`;
+    userInputField.disabled = true;
+
+    countdownTimer = setInterval(() => {
+        countdown--;
+        if (countdown > 0) {
+            sentenceDisplay.textContent = `Game starts in ${countdown} seconds...`;
+        } else {
+            clearInterval(countdownTimer);
+            startGame();
+        }
+    }, 1000);
+}
+
+// Start the typing game
 function startGame() {
     sentence = getRandomSentence(difficultySelect.value);
     sentenceDisplay.textContent = sentence;
     userInputField.value = "";
+    userInputField.disabled = false;
+    userInputField.focus();  // Focus on the input field automatically
     startTime = new Date().getTime();
     totalErrors = 0;
     updateStats();
@@ -102,7 +122,7 @@ function endGame() {
     // Update results and stats
     updatePromptList(sentence, elapsedTime);
     updateStats();
-    startGame();
+    startGameWithCountdown();  // Restart with countdown after finishing
 }
 
 // Load saved scores from cookies
@@ -152,6 +172,6 @@ function updateStats() {
 
 // Start the game when the page loads
 window.onload = () => {
-    startGame();
+    startGameWithCountdown();
     loadSavedScores();
 };
