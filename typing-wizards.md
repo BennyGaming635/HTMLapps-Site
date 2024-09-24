@@ -4,31 +4,28 @@ title: "Typing Wizards"
 permalink: /wizards
 ---
 
-
-<div class="container">
+<div class="typing-game-container">
     <h1>Typing Wizards</h1>
-    <div class="difficulty-container">
-        <label for="difficulty">Select Difficulty:</label>
-        <select id="difficulty">
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-        </select>
+    <label for="difficulty">Select Difficulty:</label>
+    <select id="difficulty">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+    </select>
+    <div id="sentence-container">
+        <p id="sentence">Your sentence will appear here.</p>
     </div>
-    <div id="sentence-container" class="sentence-container">
-        <p id="sentence"></p>
-        <input type="text" id="user-input" placeholder="Start typing..." autofocus />
+    <textarea id="user-input" rows="4" cols="50" placeholder="Start typing here..."></textarea>
+    <div id="stats">
         <p id="error-count">Errors: 0</p>
         <p id="time-taken">Time: 0 seconds</p>
     </div>
-    <div class="results-container">
-        <h2>Previous Results</h2>
-        <ul id="prompt-list"></ul>
-        <h2>Your Stats</h2>
-        <p id="average-time">Average Time: 0 seconds</p>
-        <p id="total-tries">Total Tries: 0</p>
-    </div>
+    <h3>Results</h3>
+    <ul id="prompt-list"></ul>
+    <p id="total-tries">Total Tries: 0</p>
+    <p id="average-time">Average Time: 0 seconds</p>
 </div>
 
-<script src="{{ '/typinggame/script.js' | relative_url }}"></script>
-<link rel="stylesheet" href="{{ '/typinggame/style.css' | relative_url }}">
+<!-- Include the JavaScript and CSS -->
+<script src="/typinggame/script.js"></script>
+<link rel="stylesheet" href="/typinggame/style.css">
