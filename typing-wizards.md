@@ -4,11 +4,6 @@ title: "Typing Wizards"
 permalink: /wizards
 ---
 
----
-layout: default
-title: Typing Wizards
----
-
 <div class="typing-game-container">
     <h1>Typing Wizards</h1>
     <label for="difficulty">Select Difficulty:</label>
