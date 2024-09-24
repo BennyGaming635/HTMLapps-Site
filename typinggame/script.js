@@ -86,6 +86,9 @@ function endGame() {
     li.textContent = `Sentence: "${sentence}" - Time: ${elapsedTime} seconds`;
     promptList.appendChild(li);
 
+    // Load new sentence
+    startGame();
+
     // Update overall stats
     updateStats();
 }
@@ -98,21 +101,4 @@ function updateStats() {
     const averageTime = totalTries > 0 ? (totalTime / totalTries).toFixed(2) : 0;
     totalTriesDisplay.textContent = `Total Tries: ${totalTries}`;
     averageTimeDisplay.textContent = `Average Time: ${averageTime} seconds`;
-}
-
-// Make sure cookies work if needed (example functions)
-function setCookie(name, value, days) {
-    const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
-    document.cookie = `${name}=${value}; expires=${expires}; path=/`;
-}
-
-function getCookie(name) {
-    const cookieArr = document.cookie.split("; ");
-    for (let cookie of cookieArr) {
-        const [cookieName, cookieValue] = cookie.split("=");
-        if (cookieName === name) {
-            return decodeURIComponent(cookieValue);
-        }
-    }
-    return null;
 }
