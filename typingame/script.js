@@ -4,7 +4,6 @@ let startTime = 0;
 let totalErrors = 0;
 let totalTime = 0;
 let totalTries = 0;
-let countdownTimer = null;
 
 // Sentences for different difficulty levels
 const sentences = {
@@ -13,27 +12,21 @@ const sentences = {
         "I love coding every day.",
         "HTML and CSS make the web beautiful.",
         "Cats are very curious animals.",
-        "She sells seashells by the seashore.",
-        "Birds fly in the sky with ease.",
-        "The sun sets in the west."
+        "She sells seashells by the seashore."
     ],
     medium: [
         "JavaScript is versatile and powerful.",
         "CSS animations can make websites interactive.",
         "Web development is fun and rewarding.",
         "Learning new languages sharpens the mind.",
-        "Typing fast requires practice and focus.",
-        "The path to mastery begins with the basics.",
-        "Debugging is just as important as writing code."
+        "Typing fast requires practice and focus."
     ],
     hard: [
         "TypeScript brings types to JavaScript for safety.",
         "Asynchronous programming requires handling promises.",
         "Full-stack development involves both frontend and backend.",
         "Complex algorithms require efficient implementation.",
-        "The intricacies of network protocols are fascinating.",
-        "Design patterns help solve common software problems.",
-        "Machine learning can revolutionize data analysis."
+        "The intricacies of network protocols are fascinating."
     ]
 };
 
@@ -46,6 +39,7 @@ const timeTakenDisplay = document.getElementById("time-taken");
 const promptList = document.getElementById("prompt-list");
 const averageTimeDisplay = document.getElementById("average-time");
 const totalTriesDisplay = document.getElementById("total-tries");
+const startButton = document.getElementById("start-button");
 
 // Get random sentence based on difficulty
 function getRandomSentence(difficulty) {
@@ -53,24 +47,7 @@ function getRandomSentence(difficulty) {
     return selectedSentences[Math.floor(Math.random() * selectedSentences.length)];
 }
 
-// Start the game with a 5-second countdown
-function startGameWithCountdown() {
-    let countdown = 5;
-    sentenceDisplay.textContent = `Game starts in ${countdown} seconds...`;
-    userInputField.disabled = true;
-
-    countdownTimer = setInterval(() => {
-        countdown--;
-        if (countdown > 0) {
-            sentenceDisplay.textContent = `Game starts in ${countdown} seconds...`;
-        } else {
-            clearInterval(countdownTimer);
-            startGame();
-        }
-    }, 1000);
-}
-
-// Start the typing game
+// Start the game
 function startGame() {
     sentence = getRandomSentence(difficultySelect.value);
     sentenceDisplay.textContent = sentence;
@@ -122,7 +99,6 @@ function endGame() {
     // Update results and stats
     updatePromptList(sentence, elapsedTime);
     updateStats();
-    startGameWithCountdown();  // Restart with countdown after finishing
 }
 
 // Load saved scores from cookies
@@ -170,8 +146,10 @@ function updateStats() {
     document.getElementById("average-time").textContent = `Average Time: ${averageTime} seconds`;
 }
 
-// Start the game when the page loads
+// Event listener for the start button
+startButton.addEventListener("click", startGame);
+
+// Load previous scores on page load
 window.onload = () => {
-    startGameWithCountdown();
     loadSavedScores();
 };
