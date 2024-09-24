@@ -5,22 +5,34 @@ let totalErrors = 0;
 let totalTime = 0;
 let totalTries = 0;
 
-// Sentences for different difficulty levels
+// Expanded sentences for different difficulty levels
 const sentences = {
     easy: [
         "The quick brown fox jumps over the lazy dog.",
         "I love coding every day.",
-        "HTML and CSS make the web beautiful."
+        "HTML and CSS make the web beautiful.",
+        "Cats are very curious animals.",
+        "She sells seashells by the seashore.",
+        "Birds fly in the sky with ease.",
+        "The sun sets in the west."
     ],
     medium: [
         "JavaScript is versatile and powerful.",
         "CSS animations can make websites interactive.",
-        "Web development is fun and rewarding."
+        "Web development is fun and rewarding.",
+        "Learning new languages sharpens the mind.",
+        "Typing fast requires practice and focus.",
+        "The path to mastery begins with the basics.",
+        "Debugging is just as important as writing code."
     ],
     hard: [
         "TypeScript brings types to JavaScript for safety.",
         "Asynchronous programming requires handling promises.",
-        "Full-stack development involves both frontend and backend."
+        "Full-stack development involves both frontend and backend.",
+        "Complex algorithms require efficient implementation.",
+        "The intricacies of network protocols are fascinating.",
+        "Design patterns help solve common software problems.",
+        "Machine learning can revolutionize data analysis."
     ]
 };
 
