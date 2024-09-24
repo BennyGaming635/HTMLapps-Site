@@ -4,6 +4,8 @@ title: "Typing Wizards"
 permalink: /wizards
 ---
 
+## Welcome to Typing Wizards!
+### Once you finish a prompt change the difficulty and click Start game to try again!
 <div class="typing-game-container">
     <h1>Typing Wizards</h1>
     <label for="difficulty">Select Difficulty:</label>
