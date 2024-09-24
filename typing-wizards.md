@@ -4,6 +4,11 @@ title: "Typing Wizards"
 permalink: /wizards
 ---
 
+---
+layout: default
+title: Typing Wizards
+---
+
 <div class="typing-game-container">
     <h1>Typing Wizards</h1>
     <label for="difficulty">Select Difficulty:</label>
@@ -28,5 +33,5 @@ permalink: /wizards
     <p id="average-time">Average Time: 0 seconds</p>
 </div>
 <!-- Include the JavaScript and CSS -->
-<script src="/typinggame/script.js"></script>
+<script src="/typinggame/script.js" defer></script>
 <link rel="stylesheet" href="/typinggame/style.css">
