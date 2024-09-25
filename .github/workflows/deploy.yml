@@ -20,12 +20,11 @@ jobs:
     - name: Install dependencies
       run: npm install # Adjust this if needed
 
-    - name: Replace API key
-      run: |
-        # Create a temporary file with the API key replaced
-        cp space/script.js space/script_temp.js
-        sed -i "s|YOUR_NASA_API_KEY_HERE|${{ secrets.NASA_API_KEY }}|g" space/script_temp.js
-        mv space/script_temp.js space/script.js
+    - name: Set the API key environment variable
+      run: echo "Nasa_API_KEY=${{ secrets.NASA_API_KEY }}" >> $GITHUB_ENV
+
+    - name: Replace API key using Node.js script
+      run: node replace.js
 
     - name: Build project
       run: npm run build # Adjust this if you have a build command

@@ -1,5 +1,4 @@
-const NASA_API_KEY = "YOUR_NASA_API_KEY_HERE";
-
+const NASA_API_KEY = "${NASA_API_KEY}"; 
 async function fetchMarsImages() {
     const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${NASA_API_KEY}`);
     const data = await response.json();
