@@ -24,7 +24,7 @@ jobs:
       run: echo "Nasa_API_KEY=${{ secrets.NASA_API_KEY }}" >> $GITHUB_ENV
 
     - name: Replace API key using Node.js script
-      run: node replace.js
+      run: node .github/workflows/replace.js  # Use the correct path
 
     - name: Build project
       run: npm run build # Adjust this if you have a build command
