@@ -1,18 +1,34 @@
-const NASA_API_KEY = "${NASA_API_KEY}"; 
-async function fetchMarsImages() {
-    const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${NASA_API_KEY}`);
-    const data = await response.json();
-    displayImages(data.photos);
+// NASA API Key (replace with your actual key)
+const apiKey = 'wYlRypCbQirhcf3MoJhBaolblxdbMan6E8mFqh91';
+
+// Function to fetch Mars Rover Photos
+async function fetchMarsRoverPhotos() {
+    const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${apiKey}`;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        // Display photos
+        displayPhotos(data.photos);
+    } catch (error) {
+        console.error('Error fetching Mars rover photos:', error);
+    }
 }
 
-async function fetchSatelliteImages() {
-    const response = await fetch(`https://api.nasa.gov/planetary/earth/assets?lon=-122.4194&lat=37.7749&date=2021-01-01&api_key=${NASA_API_KEY}`);
-    const data = await response.json();
-    displayImages(data.assets);
+// Function to display photos
+function displayPhotos(photos) {
+    const photosContainer = document.getElementById('photosContainer');
+    photosContainer.innerHTML = ''; // Clear previous photos
+
+    photos.forEach(photo => {
+        const imgElement = document.createElement('img');
+        imgElement.src = photo.img_src;
+        imgElement.alt = 'Mars Rover Photo';
+        imgElement.style.width = '100%'; // Adjust as needed
+        photosContainer.appendChild(imgElement);
+    });
 }
 
-async function fetchSpaceMissions() {
-    const response = await fetch(`https://llapi.thespacedevs.com/2.2.0/missions/`);
-    const data = await response.json();
-    displayMissions(data);
-}
+// Call the fetch function on page load
+fetchMarsRoverPhotos();
