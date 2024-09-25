@@ -22,7 +22,10 @@ jobs:
 
     - name: Replace API key
       run: |
-        sed -i "s|YOUR_NASA_API_KEY_HERE|${{ secrets.NASA_API_KEY }}|g" space/script.js
+        # Create a temporary file with the API key replaced
+        cp space/script.js space/script_temp.js
+        sed -i "s|YOUR_NASA_API_KEY_HERE|${{ secrets.NASA_API_KEY }}|g" space/script_temp.js
+        mv space/script_temp.js space/script.js
 
     - name: Build project
       run: npm run build # Adjust this if you have a build command
