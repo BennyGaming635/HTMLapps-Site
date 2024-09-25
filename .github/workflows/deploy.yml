@@ -12,25 +12,27 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
       with:
-        node-version: '14' # or your preferred version
+        ruby-version: '3.0'  # You can specify the version you need
 
-    - name: Install dependencies
-      run: npm install # Adjust this if needed
+    - name: Install Jekyll and Bundler
+      run: |
+        gem install bundler
+        gem install jekyll
 
     - name: Set the API key environment variable
       run: echo "Nasa_API_KEY=${{ secrets.NASA_API_KEY }}" >> $GITHUB_ENV
 
     - name: Replace API key using Node.js script
-      run: node .github/workflows/replace.js  # Use the correct path
+      run: node .github/workflows/replace.js
 
     - name: Build project
-      run: npm run build # Adjust this if you have a build command
+      run: npm run build
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public # Adjust this to your output directory
+        publish_dir: ./public  # Adjust this to your output directory
