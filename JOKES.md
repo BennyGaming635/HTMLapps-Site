@@ -23,7 +23,6 @@ The **Random Joke Generator** is a fun, light-hearted web app that provides rand
 
 
 ---
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
