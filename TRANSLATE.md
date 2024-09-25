@@ -4,9 +4,8 @@ title: "Translator"
 permalink: /translate
 ---
 
-
-
 This is a simple Language Translation App using the LibreTranslate API. Simply input what to translate and what language and then what to translate to!
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
