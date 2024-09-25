@@ -10,7 +10,7 @@
 ############################
 
 # Name of website
-title: HTML Wizards Offical
+title: HTML Wizards Official
 
 # Your name to show in the footer
 author: HTML Wizards
@@ -25,6 +25,7 @@ github:
 remote_theme: pages-themes/slate@v0.2.0
 plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
+
 ###############################################
 # --- List of links in the navigation bar --- #
 ###############################################

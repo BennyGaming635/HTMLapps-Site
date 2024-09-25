@@ -1,0 +1,34 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14' # or your preferred version
+
+    - name: Install dependencies
+      run: npm install # Adjust this if needed
+
+    - name: Replace API key
+      run: |
+        sed -i 's/YOUR_NASA_API_KEY_HERE/${{ secrets.NASA_API_KEY }}/' space/script.js
+
+    - name: Build project
+      run: npm run build # Adjust this if you have a build command
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public # Adjust this to your output directory
